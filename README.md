@@ -51,6 +51,14 @@ Ending "getUser" 309ms
 
 ### API
 
+#### new qlock(opts)
+
+Instantiates a new qlock logger. For production use, it's recommended to mute qlock, which effectively turns all
+functionality into no-ops.
+
+* `opts` - An object containing instantiation options 
+  * `muted` - Pass in a truthy value to mute qlock.
+
 #### log(description, [callback]) ##
 
 This method is used to log consecutive events. The first `log()` will initiate the first timestamp whereas
