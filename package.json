@@ -1,0 +1,26 @@
+{
+  "name": "qlock",
+  "version": "0.0.0",
+  "description": "simple timestamping",
+  "main": "lib/qlock.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/prestonp/qlock.git"
+  },
+  "keywords": [
+    "timestamp",
+    "logging"
+  ],
+  "author": "Preston Pham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prestonp/qlock/issues"
+  },
+  "homepage": "https://github.com/prestonp/qlock",
+  "devDependencies": {
+    "mocha": "^1.20.0"
+  }
+}
