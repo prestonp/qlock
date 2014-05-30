@@ -3,13 +3,13 @@ qlock
 
 Quick and dirty timestamping.
 
-#### Install
+### Install
 
 npm install qlock
 
-#### Usage
+### Usage
 
-Logging lifecycle of complex operations:
+How to log the lifecycle of a series of complex operations:
 
 ```javascript
 var Qlock = require('qlock');
@@ -32,7 +32,8 @@ foo completed - 23ms
 bar completed - 443ms
 ```
 
-Or profile a single event
+Use `profile()` to measure a single event. Note that this
+requires two calls to start and end the event.
 
 ```javascript
 qlk.profile('getUser');
@@ -48,11 +49,30 @@ Starting "getUser"
 Ending "getUser" 309ms
 ```
 
-#### API
+### API
 
-* __log(description, [callback])__ - The first `log()` will initiate the first timestamp. Use 
-  the optional `callback(description, diff)` to customize logging behavior. Otherwise it simply
-  prints to console.
-* __reset()__ - Resets the timestamp, the following `log()` will be relative to when this is invoked..
-* __profile(name)__ - Profile a single event by a __unique__ name. The first call will start , while the second
-  will end it.
+#### log(description, [callback]) ##
+
+This method is used to log consecutive events. The first `log()` will initiate the first timestamp whereas
+consecutive calls to `log()` will log the timestamp difference since the last event.
+  
+**Arguments**
+
+* `description` - A description of the event being logged
+* `callback(description, diff)` - An optional callback function to customize logging behavior. The `diff` measures
+  time since last event in milliseconds. Omitting this callback will simply print the description and diff to 
+  the console.
+
+#### reset()
+
+Resets the timestamp for `log()`, the following `log()` will be relative to when this is invoked.
+
+#### profile(name) 
+
+Profile a single event by a __unique__ name. The first `profile()` will start recording , while the second
+will end it. Ensure that all profiled events are ended otherwise it could leak memory if events just
+pile up and never get completed.
+
+**Arguments**
+
+* `name` - A string to index an event.
