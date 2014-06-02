@@ -61,7 +61,7 @@ functionality into no-ops.
 
 ===
 
-#### log(description, [callback]) ##
+#### log(description, [callback])
 
 This method is used to log consecutive events. The first `log()` will initiate the first timestamp whereas
 consecutive calls to `log()` will log the timestamp difference since the last event.
@@ -81,7 +81,7 @@ Resets the timestamp for `log()`, the following `log()` will be relative to when
 
 ===
 
-#### profile(name) 
+#### profile(name, [callback]) 
 
 Profile a single event by a __unique__ name. The first `profile()` will start recording , while the second
 will end it. Ensure that all profiled events are ended otherwise it could leak memory if events just
@@ -90,6 +90,7 @@ pile up and never get completed.
 **Arguments**
 
 * `name` - A string to index an event.
+* `callback(name, diff)` - An optional callback function to customize logging behavior.
 
 ===
 
