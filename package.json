@@ -1,6 +1,6 @@
 {
   "name": "qlock",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "simple timestamping",
   "main": "lib/qlock.js",
   "scripts": {
