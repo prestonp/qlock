@@ -6,8 +6,8 @@ describe('qlock', function() {
   describe('log', function() {
     it('should log diffs correctly', function(done) {
       var q = new Qlock();
-      var waitOne = 1032;
-      var waitTwo = 321;
+      var waitOne = 700;
+      var waitTwo = 300;
       q.log('Starting log', noop);
       setTimeout(function() {
         q.log('event one', function(description, diff) {
@@ -40,6 +40,20 @@ describe('qlock', function() {
             });
           }, waitLog);
         }, waitReset);
+    });
+  });
+
+  describe('profile', function() {
+    it('should profile', function(done) {
+      var q = new Qlock();
+      var wait = 1000;
+      q.profile('apple', noop);
+      setTimeout(function() {
+        q.profile('apple', function(name, diff) {
+          assert(diff >= wait);
+          done();
+        });
+      }, wait);
     });
   });
 });
